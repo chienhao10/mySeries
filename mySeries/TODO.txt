@@ -1,6 +1,6 @@
-DONE:Diana
+DONE:AurelionSol Diana Ryze
 
-TODO:Annie AurelionSol Brand Katarina Lux Syndra Viktor
+TODO:Annie Brand Katarina Lux Syndra Viktor
 
 Need TODO:
 Ryze-Auto Logic? LastHit Logic?

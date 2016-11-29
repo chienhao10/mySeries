@@ -15,7 +15,6 @@
             }
 
             KillSteal.Init();
-            Auto.Init();
  
             switch (Orbwalker.ActiveMode)
             {
@@ -28,9 +27,6 @@
                 case Orbwalking.OrbwalkingMode.LaneClear:
                     LaneClear.Init();
                     JungleClear.Init();
-                    break;
-                case Orbwalking.OrbwalkingMode.LastHit:
-                    LastHit.Init();
                     break;
             }
         }

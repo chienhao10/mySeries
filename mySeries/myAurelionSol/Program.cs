@@ -19,6 +19,8 @@
             }
 
             Logic.LoadAssembly();
+
+            Game.PrintChat("my Series: " + ObjectManager.Player.ChampionName + " Load! Credit By NightMoon!");
         }
     }
 }

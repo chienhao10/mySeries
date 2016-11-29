@@ -13,7 +13,7 @@
         internal static Spell W;
         internal static Spell E;
         internal static Spell R;
-        internal static SpellSlot Ignite = SpellSlot.Unknown;
+        internal static MissileClient qMillile;
         internal static Menu Menu;
         internal static Obj_AI_Hero Me;
         internal static Orbwalking.Orbwalker Orbwalker;

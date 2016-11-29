@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -57,16 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic.cs" />
+    <Compile Include="Manager\Events\GameObjects\DeleteManager.cs" />
     <Compile Include="Manager\Events\Drawings\DrawManager.cs" />
     <Compile Include="Manager\Events\EventManager.cs" />
+    <Compile Include="Manager\Events\GameObjects\CreateManager.cs" />
     <Compile Include="Manager\Events\Games\LoopManager.cs" />
-    <Compile Include="Manager\Events\Games\Mode\Auto.cs" />
     <Compile Include="Manager\Events\Games\Mode\Combo.cs" />
     <Compile Include="Manager\Events\Games\Mode\Harass.cs" />
     <Compile Include="Manager\Events\Games\Mode\JungleClear.cs" />
     <Compile Include="Manager\Events\Games\Mode\KillSteal.cs" />
     <Compile Include="Manager\Events\Games\Mode\LaneClear.cs" />
-    <Compile Include="Manager\Events\Games\Mode\LastHit.cs" />
+    <Compile Include="Manager\Events\Gapcloser\AntiGapcloserManager.cs" />
+    <Compile Include="Manager\Events\Interrupt\InterruptManager.cs" />
     <Compile Include="Manager\Menu\MenuManager.cs" />
     <Compile Include="Manager\Spells\SpellManager.cs" />
     <Compile Include="myCommon\CheckStatus.cs" />
