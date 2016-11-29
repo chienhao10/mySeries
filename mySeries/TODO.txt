@@ -1,27 +1,6 @@
-Ryze:
-Auto Logic?
-LastHit Logic?
+DONE:Diana
 
-Annie:
-ALL
+TODO:Annie AurelionSol Brand Katarina Lux Syndra Viktor
 
-AurelionSol:
-ALL
-
-Brand:
-ALL
-
-Diana:
-ALL
-
-Katarina:
-ALL
-
-Lux:
-ALL
-
-Syndra:
-ALL
-
-Viktor:
-ALL
+Need TODO:
+Ryze-Auto Logic? LastHit Logic?
