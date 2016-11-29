@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{053b1efc-f1eb-4593-81cc-807036102daa}</ProjectGuid>
+    <ProjectGuid>{053B1EFC-F1EB-4593-81CC-807036102DAA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mySyndra</RootNamespace>
@@ -56,16 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CheckStatus.cs" />
-    <Compile Include="Common\DamageCalculate.cs" />
-    <Compile Include="Common\DamageIndicator.cs" />
-    <Compile Include="Common\Distance.cs" />
-    <Compile Include="Common\HumanizerManager.cs" />
-    <Compile Include="Common\LevelsManager.cs" />
-    <Compile Include="Common\ManaManager.cs" />
-    <Compile Include="Common\MinionCache.cs" />
-    <Compile Include="Common\Orbwalking.cs" />
-    <Compile Include="Common\SkinManager.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="Manager\Events\Drawings\DrawManager.cs" />
     <Compile Include="Manager\Events\EventManager.cs" />
@@ -78,6 +68,18 @@
     <Compile Include="Manager\Events\Games\Mode\LaneClear.cs" />
     <Compile Include="Manager\Events\Games\Mode\LastHit.cs" />
     <Compile Include="Manager\Menu\MenuManager.cs" />
+    <Compile Include="myCommon\CheckStatus.cs" />
+    <Compile Include="myCommon\DamageCalculate.cs" />
+    <Compile Include="myCommon\DamageIndicator.cs" />
+    <Compile Include="myCommon\Distance.cs" />
+    <Compile Include="myCommon\HumanizerManager.cs" />
+    <Compile Include="myCommon\LevelsManager.cs" />
+    <Compile Include="myCommon\ManaManager.cs" />
+    <Compile Include="myCommon\MenuManager.cs" />
+    <Compile Include="myCommon\MinionCache.cs" />
+    <Compile Include="myCommon\Orbwalking.cs" />
+    <Compile Include="myCommon\SkinManager.cs" />
+    <Compile Include="myCommon\StackManager.cs" />
     <Compile Include="Manager\Spells\SpellManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
