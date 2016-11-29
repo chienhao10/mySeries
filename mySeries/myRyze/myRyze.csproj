@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\Events\Gapcloser\AntiGapcloserManager.cs" />
+    <Compile Include="Manager\Events\GameObjects\CreateManager.cs" />
+    <Compile Include="Manager\Events\Interrupt\InterruptManager.cs" />
     <Compile Include="myCommon\CheckStatus.cs" />
     <Compile Include="myCommon\DamageCalculate.cs" />
     <Compile Include="myCommon\DamageIndicator.cs" />

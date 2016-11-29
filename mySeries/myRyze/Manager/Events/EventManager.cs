@@ -3,6 +3,7 @@
     using Games;
     using Drawings;
     using LeagueSharp;
+    using LeagueSharp.Common;
     using Orbwalking = myCommon.Orbwalking;
 
     internal class EventManager
@@ -12,6 +13,9 @@
             Game.OnUpdate += LoopManager.Init;
             Spellbook.OnCastSpell += CastSpellManager.Init;
             Orbwalking.BeforeAttack += BeforeAttackManager.Init;
+            Interrupter2.OnInterruptableTarget += InterruptManager.Init;
+            AntiGapcloser.OnEnemyGapcloser += AntiGapcloserManager.Init;
+            GameObject.OnCreate += CreateManager.Init;
             Drawing.OnDraw += DrawManager.Init;
             Drawing.OnEndScene += DrawManager.InitMinMap;
         }

@@ -8,7 +8,7 @@
 
     internal class DrawManager : Logic
     {
-        internal static void Init(EventArgs args)
+        internal static void Init(EventArgs Args)
         {
             if (!Me.IsDead && !MenuGUI.IsShopOpen && !MenuGUI.IsChatOpen && !MenuGUI.IsScoreboardOpen)
             {

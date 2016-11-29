@@ -1,5 +1,4 @@
-Ryze:(update in 10 hours or 14? just go to sleep)
-Anti Gapcloser
+Ryze:
 Auto Logic?
 LastHit Logic?
 
@@ -10,6 +9,9 @@ AurelionSol:
 ALL
 
 Brand:
+ALL
+
+Diana:
 ALL
 
 Katarina:

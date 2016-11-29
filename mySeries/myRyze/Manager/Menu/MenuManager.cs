@@ -86,6 +86,26 @@
 
             var miscMenu = Menu.AddSubMenu(new Menu("Misc", "Misc"));
             {
+                var interruptMenu = miscMenu.AddSubMenu(new Menu("Interrupt Settings", "Interrupt Settings"));
+                {
+                    interruptMenu.AddItem(new MenuItem("Interrupt", "Interrupt Danger Spells", true).SetValue(true));
+                    interruptMenu.AddItem(new MenuItem("AntiAlistar", "Interrupt Alistar W", true).SetValue(true));
+                    interruptMenu.AddItem(new MenuItem("AntiRengar", "Interrupt Rengar Jump", true).SetValue(true));
+                    interruptMenu.AddItem(new MenuItem("AntiKhazix", "Interrupt Khazix R", true).SetValue(true));
+                }
+
+                var antigapcloserMenu =
+                    miscMenu.AddSubMenu(new Menu("AntiGapcloser Settings", "AntiGapcloser Settings"));
+                {
+                    antigapcloserMenu.AddItem(new MenuItem("Gapcloser", "Anti Gapcloser", true).SetValue(true));
+                    foreach (var target in HeroManager.Enemies)
+                    {
+                        antigapcloserMenu.AddItem(
+                            new MenuItem("AntiGapcloser" + target.ChampionName.ToLower(), target.ChampionName, true)
+                                .SetValue(true));
+                    }
+                }
+
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
                 {
                     SkinManager.AddToMenu(skinMenu, 10);

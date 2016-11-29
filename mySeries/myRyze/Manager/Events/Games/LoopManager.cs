@@ -8,7 +8,7 @@
 
     internal class LoopManager : Logic
     {
-        internal static void Init(EventArgs args)
+        internal static void Init(EventArgs Args)
         {
             R.Range = R.Level > 0 ? R.Level*1500 : 0;
             CalculateCD.Init();
