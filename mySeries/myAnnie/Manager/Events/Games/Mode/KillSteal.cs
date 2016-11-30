@@ -1,18 +1,29 @@
 ﻿namespace myAnnie.Manager.Events.Games.Mode
 {
-    using System;
-    using System.Collections.Generic;
+    using myCommon;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using LeagueSharp;
     using LeagueSharp.Common;
 
     internal class KillSteal : Logic
     {
         internal static void Init()
         {
-            throw new NotImplementedException();
+            foreach (var e in HeroManager.Enemies.Where(e => !e.IsZombie && !e.IsDead && e.IsValidTarget()))
+            {
+                if (Q.IsReady() && Menu.GetBool("KillStealQ") && e.Health + e.MagicalShield < Q.GetDamage(e) &&
+                    e.IsValidTarget(Q.Range))
+                {
+                    Q.Cast(e, true);
+                    return;
+                }
+
+                if (W.IsReady() && Menu.GetBool("KillStealW") && e.Health + e.MagicalShield < W.GetDamage(e) &&
+                    e.IsValidTarget(W.Range))
+                {
+                    W.Cast(e, true);
+                    return;
+                }
+            }
         }
     }
 }

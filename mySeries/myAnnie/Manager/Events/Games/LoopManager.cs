@@ -9,13 +9,14 @@
     {
         internal static void Init(EventArgs args)
         {
+            AutoFollow.Init();
+
             if (Me.IsDead || Me.IsRecalling())
             {
                 return;
             }
 
             KillSteal.Init();
-            Auto.Init();
  
             switch (Orbwalker.ActiveMode)
             {
@@ -29,8 +30,8 @@
                     LaneClear.Init();
                     JungleClear.Init();
                     break;
-                case Orbwalking.OrbwalkingMode.LastHit:
-                    LastHit.Init();
+                case Orbwalking.OrbwalkingMode.None:
+                    FlashR.Init();
                     break;
             }
         }

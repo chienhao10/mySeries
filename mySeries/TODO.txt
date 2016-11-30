@@ -3,4 +3,4 @@ DONE:AurelionSol Diana Ryze
 TODO:Annie Brand Katarina Lux Syndra Viktor
 
 Need TODO:
-Ryze-Auto Logic? LastHit Logic?
+Any Suggest!

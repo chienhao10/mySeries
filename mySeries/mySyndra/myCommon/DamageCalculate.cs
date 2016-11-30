@@ -14,7 +14,6 @@
 
             var damage = 0d;
 
-            damage += ObjectManager.Player.GetAutoAttackDamage(target, true);
             damage += GetQDamage(target);
             damage += GetWDamage(target);
             damage += GetEDamage(target);
