@@ -1,4 +1,4 @@
-﻿namespace myKatarina.Manager.Events.Games.Mode
+﻿namespace myKarma.Manager.Events.Games.Mode
 {
     using System;
     using System.Collections.Generic;
@@ -8,11 +8,11 @@
     using LeagueSharp;
     using LeagueSharp.Common;
 
-    internal class LastHit : Logic
+    internal class KillSteal : Logic
     {
         internal static void Init()
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

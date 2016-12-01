@@ -1,6 +1,5 @@
-﻿namespace myKatarina
+﻿namespace myKarma
 {
-    using System.Collections.Generic;
     using Manager.Events;
     using Manager.Menu;
     using Manager.Spells;
@@ -18,7 +17,6 @@
         internal static Menu Menu;
         internal static Obj_AI_Hero Me;
         internal static Orbwalking.Orbwalker Orbwalker;
-        internal static List<DaggerManager> Daggers = new List<DaggerManager>();
 
         internal static void LoadAssembly()
         {

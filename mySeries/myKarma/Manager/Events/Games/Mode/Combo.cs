@@ -1,4 +1,4 @@
-﻿namespace myKatarina.Manager.Events.Games.Mode
+﻿namespace myKarma.Manager.Events.Games.Mode
 {
     using System;
     using myCommon;
@@ -9,7 +9,7 @@
     {
         internal static void Init()
         {
-         
+            throw new NotImplementedException();
         }
     }
 }

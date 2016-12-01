@@ -1,4 +1,4 @@
-﻿namespace myKatarina.Manager.Events
+﻿namespace myKarma.Manager.Events
 {
     using Games;
     using Drawings;
@@ -10,8 +10,6 @@
         internal static void Init()
         {
             Game.OnUpdate += LoopManager.Init;
-            GameObject.OnCreate += CreateManager.Init;
-            GameObject.OnDelete += DeleteManager.Init;
             Drawing.OnDraw += DrawManager.Init;
         }
     }

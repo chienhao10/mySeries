@@ -1,4 +1,4 @@
-﻿namespace myKatarina
+﻿namespace myKarma
 {
     using System;
     using LeagueSharp;
@@ -13,14 +13,12 @@
 
         private static void Game_OnGameLoad(EventArgs args)
         {
-            if (ObjectManager.Player.ChampionName != "Katarina")
+            if (ObjectManager.Player.ChampionName != "Annie")
             {
                 return;
             }
 
             Logic.LoadAssembly();
-
-            Game.PrintChat("my Series: " + ObjectManager.Player.ChampionName + " Load! Credit By NightMoon!");
         }
     }
 }

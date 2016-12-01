@@ -12,7 +12,7 @@
     {
         internal static void Init()
         {
-            throw new NotImplementedException();
+   
         }
     }
 }

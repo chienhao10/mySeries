@@ -1,4 +1,4 @@
-﻿namespace myKatarina.Manager.Menu
+﻿namespace myKarma.Manager.Menu
 {
     using myCommon;
     using LeagueSharp.Common;
@@ -8,7 +8,7 @@
     {
         internal static void Init()
         {
-            Menu = new Menu("mySeries: " + Me.ChampionName, "mySeries: " + Me.ChampionName, true);
+            Menu = new Menu("myLux", "myLux", true);
 
             var targetSelectMenu = Menu.AddSubMenu(new Menu("Target Selector", "Target Selector"));
             {
@@ -32,22 +32,13 @@
             {
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
                 {
-                    SkinManager.AddToMenu(skinMenu, 9);
+                    SkinManager.AddToMenu(skinMenu, 18);
                 }
 
                 var autoLevelMenu = miscMenu.AddSubMenu(new Menu("Auto Levels", "Auto Levels"));
                 {
                     LevelsManager.AddToMenu(autoLevelMenu);
                 }
-            }
-
-            var drawMenu = Menu.AddSubMenu(new Menu("Drawings", "Drawings"));
-            {
-                drawMenu.AddItem(new MenuItem("DrawQ", "Draw Q Range", true).SetValue(false));
-                drawMenu.AddItem(new MenuItem("DrawE", "Draw E Range", true).SetValue(false));
-                drawMenu.AddItem(new MenuItem("DrawR", "Draw R Range", true).SetValue(false));
-                ManaManager.AddDrawFarm(drawMenu);
-                DamageIndicator.AddToMenu(drawMenu, DamageCalculate.GetComboDamage);
             }
 
             Menu.AddItem(new MenuItem("asd ad asd ", " ", true));
