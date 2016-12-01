@@ -33,7 +33,7 @@
                 comboMenu.AddItem(
                     new MenuItem("ComboMode", "Combo Mode?", true).SetValue(new StringList(new[] { "Q->R", "R->Q" })));
                 comboMenu.AddItem(
-                    new MenuItem("MisayaRange", "Min RQ Range >= x", true).SetValue(new Slider(300, 150, 825)));
+                    new MenuItem("MisayaRange", "Min RQ Range >= x", true).SetValue(new Slider(500, 150, 825)));
             }
 
             var harassMenu = Menu.AddSubMenu(new Menu("Harass", "Harass"));
@@ -45,7 +45,7 @@
 
             var clearMenu = Menu.AddSubMenu(new Menu("Clear", "Clear"));
             {
-                var laneClearMenu = Menu.AddSubMenu(new Menu("LaneClear", "LaneClear"));
+                var laneClearMenu = clearMenu.AddSubMenu(new Menu("LaneClear", "LaneClear"));
                 {
                     laneClearMenu.AddItem(new MenuItem("LaneClearQ", "Use Q", true).SetValue(true));
                     laneClearMenu.AddItem(new MenuItem("LaneClearQCount", "Use Q| Min Hit Count >= x", true)
@@ -57,7 +57,7 @@
                         .SetValue(new Slider(50)));
                 }
 
-                var jungleClearMenu = Menu.AddSubMenu(new Menu("JungleClear", "JungleClear"));
+                var jungleClearMenu = clearMenu.AddSubMenu(new Menu("JungleClear", "JungleClear"));
                 {
                     jungleClearMenu.AddItem(new MenuItem("JungleClearQ", "Use Q", true).SetValue(true));
                     jungleClearMenu.AddItem(new MenuItem("JungleClearW", "Use W", true).SetValue(true));
@@ -94,7 +94,7 @@
 
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
                 {
-                    SkinManager.AddToMenu(skinMenu, 4);
+                    SkinManager.AddToMenu(skinMenu, 10);
                 }
 
                 var autoLevelMenu = miscMenu.AddSubMenu(new Menu("Auto Levels", "Auto Levels"));
