@@ -488,7 +488,6 @@
             LaneClear,
             LastHit,
             Freeze,
-            Flee,
             None
         }
 
@@ -580,8 +579,6 @@
                         new MenuItem("LastHit", "Last hit").SetValue(new KeyBind('X', KeyBindType.Press)));
                     keyMenu.AddItem(
                         new MenuItem("Freeze", "Freeze").SetValue(new KeyBind('N', KeyBindType.Press)));
-                    keyMenu.AddItem(
-                        new MenuItem("Flee", "Flee").SetValue(new KeyBind('Z', KeyBindType.Press)));
                 }
 
                 _config.AddItem(new MenuItem("  cerdit", "    "));
@@ -652,11 +649,6 @@
                         return OrbwalkingMode.LastHit;
                     }
 
-                    if (_config.Item("Flee").GetValue<KeyBind>().Active)
-                    {
-                        return OrbwalkingMode.Flee;
-                    }
-
                     return OrbwalkingMode.None;
                 }
                 set
@@ -711,11 +703,6 @@
             {
                 AttackableUnit result = null;
                 var mode = ActiveMode;
-
-                if (mode == OrbwalkingMode.Flee)
-                {
-                    return null;
-                }
 
                 if (_forcedTarget.IsValidTarget() && InAutoAttackRange(_forcedTarget))
                 {

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{b2db976f-44f8-4185-8f7f-fe5767a7e776}</ProjectGuid>
+    <ProjectGuid>{B2DB976F-44F8-4185-8F7F-FE5767A7E776}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>myAnnie</RootNamespace>
@@ -34,16 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D9">
-      <HintPath>..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
