@@ -42,7 +42,7 @@
 
             var clearMenu = Menu.AddSubMenu(new Menu("Clear", "Clear"));
             {
-                var laneClearMenu = Menu.AddSubMenu(new Menu("LaneClear", "LaneClear"));
+                var laneClearMenu = clearMenu.AddSubMenu(new Menu("LaneClear", "LaneClear"));
                 {
                     laneClearMenu.AddItem(new MenuItem("LaneClearQ", "Use Q", true).SetValue(true));
                     laneClearMenu.AddItem(new MenuItem("LaneClearQLH", "Use Q|Only Last Hit", true).SetValue(true));
@@ -53,7 +53,7 @@
                         new MenuItem("LaneClearMana", "When Player ManaPercent >= x%", true).SetValue(new Slider(60)));
                 }
 
-                var jungleClearMenu = Menu.AddSubMenu(new Menu("JungleClear", "JungleClear"));
+                var jungleClearMenu = clearMenu.AddSubMenu(new Menu("JungleClear", "JungleClear"));
                 {
                     jungleClearMenu.AddItem(new MenuItem("JungleClearQ", "Use Q", true).SetValue(true));
                     jungleClearMenu.AddItem(new MenuItem("JungleClearW", "Use W", true).SetValue(true));
@@ -103,7 +103,7 @@
 
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
                 {
-                    SkinManager.AddToMenu(skinMenu);
+                    SkinManager.AddToMenu(skinMenu, 10);
                 }
 
                 var autoLevelMenu = miscMenu.AddSubMenu(new Menu("Auto Levels", "Auto Levels"));
@@ -119,7 +119,6 @@
             {
                 drawMenu.AddItem(new MenuItem("DrawQ", "Draw Q Range", true).SetValue(false));
                 drawMenu.AddItem(new MenuItem("DrawW", "Draw W Range", true).SetValue(false));
-                drawMenu.AddItem(new MenuItem("DrawE", "Draw E Range", true).SetValue(false));
                 drawMenu.AddItem(new MenuItem("DrawR", "Draw R Range", true).SetValue(false));
                 drawMenu.AddItem(new MenuItem("DrawFlashR", "Draw FlashR Range", true).SetValue(false));
                 ManaManager.AddDrawFarm(drawMenu);

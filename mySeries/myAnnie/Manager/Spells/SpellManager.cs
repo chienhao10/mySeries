@@ -7,10 +7,14 @@
     {
         internal static void Init()
         {
-            Q = new Spell(SpellSlot.Q);
-            W = new Spell(SpellSlot.W);
+            Q = new Spell(SpellSlot.Q, 625f);
+            W = new Spell(SpellSlot.W, 550f);
             E = new Spell(SpellSlot.E);
-            R = new Spell(SpellSlot.R);
+            R = new Spell(SpellSlot.R, 625f);
+
+            Q.SetTargetted(0.25f, 1400f);
+            W.SetSkillshot(0.3f, 80f, float.MaxValue, false, SkillshotType.SkillshotLine);
+            R.SetSkillshot(0.25f, 180f, float.MaxValue, false, SkillshotType.SkillshotCircle);
 
             Ignite = Me.GetSpellSlot("SummonerDot");
             Flash = Me.GetSpellSlot("SummonerFlash");

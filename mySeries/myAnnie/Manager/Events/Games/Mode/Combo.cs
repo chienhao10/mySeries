@@ -52,7 +52,7 @@
                     Q.CastOnUnit(target, true);
                 }
 
-                if (Menu.GetBool("ComboW") && W.IsReady() && target.IsValidTarget(W.Range) &&
+                if (Menu.GetBool("ComboW") && W.IsReady() && target.IsValidTarget(W.Range - 50) &&
                     ((R.IsReady() && SpellManager.HaveBear) || !R.IsReady() ||
                      (target.Health > DamageCalculate.GetComboDamage(target) && SpellManager.HaveStun)))
                 {

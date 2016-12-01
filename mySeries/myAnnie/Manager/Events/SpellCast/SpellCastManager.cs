@@ -9,7 +9,7 @@
     {
         internal static void Init(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs Args)
         {
-            if (sender == null || !sender.IsEnemy || Args.SData.IsAutoAttack() || !Args.Target.IsMe)
+            if (sender == null || sender.IsMe || sender.IsAlly || !Args.SData.IsAutoAttack() || !Args.Target.IsMe)
             {
                 return;
             }

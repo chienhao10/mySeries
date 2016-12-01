@@ -22,11 +22,6 @@
                     Render.Circle.DrawCircle(Me.Position, W.Range, Color.FromArgb(9, 253, 242), 1);
                 }
 
-                if (Menu.GetBool("DrawE") && E.IsReady())
-                {
-                    Render.Circle.DrawCircle(Me.Position, E.Range, Color.FromArgb(188, 6, 248), 1);
-                }
-
                 if (Menu.GetBool("DrawR") && R.IsReady())
                 {
                     Render.Circle.DrawCircle(Me.Position, R.Range, Color.FromArgb(19, 130, 234), 1);

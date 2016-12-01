@@ -1,5 +1,6 @@
 ﻿namespace myAnnie.Manager.Events.Games.Mode
 {
+    using Spells;
     using System.Linq;
     using myCommon;
     using LeagueSharp.Common;
@@ -10,7 +11,7 @@
         {
             if (ManaManager.HasEnoughMana(Menu.GetSlider("HarassMana")))
             {
-                if (Menu.GetBool("HarassQLH") && Q.IsReady())
+                if (Menu.GetBool("HarassQLH") && Q.IsReady() && !SpellManager.HaveStun)
                 {
                     var qMinion =
                         MinionManager.GetMinions(Me.Position, Q.Range, MinionTypes.All, MinionTeam.NotAlly)
@@ -34,7 +35,7 @@
 
                 if (Menu.GetBool("HarassW") && W.IsReady())
                 {
-                    var target = TargetSelector.GetTarget(W.Range, TargetSelector.DamageType.Magical);
+                    var target = TargetSelector.GetTarget(W.Range - 50, TargetSelector.DamageType.Magical);
 
                     if (target.Check(W.Range))
                     {
