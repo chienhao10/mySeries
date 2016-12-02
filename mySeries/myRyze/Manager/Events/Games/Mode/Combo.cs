@@ -53,7 +53,7 @@
                     {
                         if (useQ && Q.IsReady() &&
                             (SpellManager.FullStack || SpellManager.NoStack ||
-                             (SpellManager.HalfStack && !W.IsReady() && Wcd >= 2 && !E.IsReady() && Ecd >= 2)) &&
+                             (SpellManager.HalfStack && !W.IsReady() && Wcd > 1 && !E.IsReady() && Ecd > 1)) &&
                             target.IsValidTarget(Q.Range))
                         {
                             var qPred = Q.GetPrediction(target);
@@ -135,7 +135,7 @@
                 {
                     if (useQ && Q.IsReady() &&
                         (SpellManager.FullStack || SpellManager.NoStack ||
-                         (SpellManager.HalfStack && !W.IsReady() && Wcd >= 2 && !E.IsReady() && Ecd >= 2)) &&
+                         (SpellManager.HalfStack && !W.IsReady() && Wcd > 1 && !E.IsReady() && Ecd > 1)) &&
                         target.IsValidTarget(Q.Range))
                     {
                         var qPred = Q.GetPrediction(target);
