@@ -18,7 +18,6 @@
                     if (target.IsValidTarget(Q.Range))
                     {
                         Q.CastOnUnit(target, true);
-                        Orbwalker.ForceTarget(target);
                     }
                 }
             }

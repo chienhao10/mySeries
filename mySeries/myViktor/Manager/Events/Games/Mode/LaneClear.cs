@@ -21,17 +21,16 @@
                     if (qMinion != null && qMinion.IsValidTarget(Q.Range))
                     {
                         Q.CastOnUnit(qMinion, true);
-                        Orbwalker.ForceTarget(qMinion);
                     }
                 }
 
                 if (Menu.GetBool("LaneClearE") && E.IsReady())
                 {
-                    var eMinions = MinionManager.GetMinions(Me.Position, E.Range);
+                    var eMinions = MinionManager.GetMinions(Me.Position, E.Range + EWidth);
 
                     if (eMinions.Any())
                     {
-                        var eMinion = eMinions.FirstOrDefault();
+                        var eMinion = eMinions.FirstOrDefault(x => x.IsValidTarget(E.Range));
                         var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Magical);
 
                         if (target != null && target.IsValidTarget(E.Range))
@@ -43,7 +42,7 @@
 
                             if (eFarm.MinionsHit+1 >= Menu.GetSlider("LaneClearECount"))
                             {
-                                E.Cast(target.Position, eFarm.Position.To3D());
+                                SpellManager.FixECast(target.Position, eFarm.Position.To3D());
                             }
                         }
                         else if (eMinion != null)
@@ -55,7 +54,7 @@
 
                             if (eFarm.MinionsHit >= Menu.GetSlider("LaneClearECount"))
                             {
-                                E.Cast(eMinion.Position, eFarm.Position.To3D());
+                                SpellManager.FixECast(eMinion.Position, eFarm.Position.To3D());
                             }
                         }
                     }

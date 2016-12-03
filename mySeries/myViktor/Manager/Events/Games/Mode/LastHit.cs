@@ -24,7 +24,6 @@
                     if (qMinions != null && qMinions.IsValidTarget(Q.Range))
                     {
                         Q.CastOnUnit(qMinions, true);
-                        Orbwalker.ForceTarget(qMinions);
                     }
                 }
             }

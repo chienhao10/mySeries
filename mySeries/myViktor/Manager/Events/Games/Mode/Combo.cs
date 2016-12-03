@@ -30,7 +30,6 @@
                 if (Menu.GetBool("ComboQ") && Q.IsReady() && target.IsValidTarget(Q.Range))
                 {
                     Q.CastOnUnit(target, true);
-                    Orbwalker.ForceTarget(target);
                 }
 
                 if (Menu.GetBool("ComboQGap") && Q.IsReady() && Me.Level >= Menu.GetSlider("ComboQGapLevel") &&

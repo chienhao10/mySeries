@@ -20,7 +20,6 @@
                     if (qMob != null && qMob.IsValidTarget(Q.Range))
                     {
                         Q.CastOnUnit(qMob, true);
-                        Orbwalker.ForceTarget(qMob);
                     }
                 }
 
@@ -31,19 +30,14 @@
 
                     if (eMobs.Any())
                     {
-                        var eMinion = eMobs.FirstOrDefault(x => x.IsValidTarget(E.Range + E.Width));
+                        var mobs = eMobs.FirstOrDefault();
 
-                        if (eMinion != null)
+                        if (mobs != null)
                         {
-                            var exEMinions = MinionManager.GetMinions(eMinion.Position, E.Range);
-                            var eFarm =
-                                SpellManager.GetBestLineFarmLocation(
-                                    exEMinions.Select(x => x.Position.To2D()).ToList(), eMinion.Position, E.Width, EWidth);
-
-                            if (eFarm.MinionsHit >= 1)
-                            {
-                                E.Cast(eMinion.Position, eFarm.Position.To3D());
-                            }
+                            SpellManager.FixECast(
+                                mobs.DistanceToPlayer() > E.Range
+                                    ? mobs.Position
+                                    : Me.Position.Extend(mobs.Position, 150), mobs.Position);
                         }
                     }
                 }

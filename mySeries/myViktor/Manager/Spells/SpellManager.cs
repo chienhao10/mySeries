@@ -1,5 +1,6 @@
 ﻿namespace myViktor.Manager.Spells
 {
+    using myCommon;
     using System;
     using System.Linq;
     using System.Collections.Generic;
@@ -319,18 +320,29 @@
 
             if (!startPosition.Equals(Vector3.Zero) && !endPosition.Equals(Vector3.Zero))
             {
-                if (startPosition.Distance(Me.ServerPosition) > E.Range)
-                {
-                    startPosition = Me.ServerPosition.Extend(startPosition, E.Range);
-                }
-
-                if (endPosition.Distance(startPosition) > EWidth)
-                {
-                    endPosition = startPosition.Extend(endPosition, EWidth);
-                }
-
-                E.Cast(startPosition, endPosition);
+                FixECast(startPosition, endPosition);
             }
+        }
+
+        internal static void FixECast(Vector3 Pos1, Vector3 Pos2)
+        {
+            if (Pos1.Equals(Vector3.Zero) || Pos2.Equals(Vector3.Zero))
+            {
+                return;
+            }
+
+            var startPos = Vector3.Zero;
+            var endPos = Vector3.Zero;
+
+            startPos = Pos1.DistanceToPlayer() > E.Range ? Me.ServerPosition.Extend(Pos1, E.Range) : Pos1;
+            endPos = endPos.Distance(Pos2) > EWidth ? startPos.Extend(Pos2, EWidth) : Pos2;
+
+            if (startPos.Equals(Vector3.Zero) || endPos.Equals(Vector3.Zero))
+            {
+                return;
+            }
+
+            E.Cast(startPos, endPos);
         }
 
         internal static MinionManager.FarmLocation GetBestLineFarmLocation(List<Vector2> minionPositions,
