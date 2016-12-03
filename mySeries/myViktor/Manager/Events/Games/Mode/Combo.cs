@@ -87,7 +87,7 @@
                     }
                 }
 
-                if (Menu.GetBool("ComboR") && R.IsReady() && target.IsValidTarget(R.Range + R.Width))
+                if (Menu.GetBool("ComboR") && R.IsReady() && target.IsValidTarget(R.Range))
                 {
                     if (Menu.GetBool("ComboRalways"))
                     {
@@ -99,7 +99,9 @@
                         }
                     }
 
-                    if (Menu.GetBool("ComboRKill") && target.Health < DamageCalculate.GetComboDamage(target))
+                    if (Menu.GetBool("ComboRKill") &&
+                        ((target.Health < DamageCalculate.GetComboDamage(target) && target.IsValidTarget(R.Range - 200)) ||
+                         target.Health < R.GetDamage(target)))
                     {
                         var rPred = R.GetPrediction(target, true);
 
