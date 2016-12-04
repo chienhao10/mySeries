@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2DB976F-44F8-4185-8F7F-FE5767A7E776}</ProjectGuid>
+    <ProjectGuid>{E6F49300-6DD7-4BED-BF47-D2F85E4719F6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>myAnnie</RootNamespace>
-    <AssemblyName>myAnnie</AssemblyName>
+    <RootNamespace>myBrand</RootNamespace>
+    <AssemblyName>myBrand</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,16 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.dll</HintPath>
+      <HintPath>D:\qMLQe\I5QEqMLQe\References\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\LeagueSharp.Common.dll</HintPath>
+      <HintPath>D:\qMLQe\I5QEqMLQe\References\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.dll</HintPath>
+      <HintPath>D:\qMLQe\I5QEqMLQe\References\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D9">
-      <HintPath>..\..\..\..\..\..\..\qMLQe\I5QEqMLQe\References\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>D:\qMLQe\I5QEqMLQe\References\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logic.cs" />
+    <Compile Include="Manager\Events\Attack\BeforeAttackManager.cs" />
     <Compile Include="Manager\Events\Drawings\DrawManager.cs" />
     <Compile Include="Manager\Events\EventManager.cs" />
     <Compile Include="Manager\Events\Games\LoopManager.cs" />

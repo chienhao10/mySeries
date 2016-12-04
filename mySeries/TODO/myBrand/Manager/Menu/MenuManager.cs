@@ -1,4 +1,4 @@
-﻿namespace myKarma.Manager.Menu
+﻿namespace myBrand.Manager.Menu
 {
     using myCommon;
     using LeagueSharp.Common;
@@ -24,26 +24,17 @@
             {
                 comboMenu.AddItem(new MenuItem("ComboQ", "Use Q", true).SetValue(true));
                 comboMenu.AddItem(new MenuItem("ComboW", "Use W", true).SetValue(true));
-                comboMenu.AddItem(
-                    new MenuItem("ComboE", "Use E Mode: ", true).SetValue(new StringList(new[] {"Low Hp", "Gank", "Off"})));
-                comboMenu.AddItem(
-                        new MenuItem("ComboESwitch", "Switch E Mode Key", true).SetValue(new KeyBind('G',
-                            KeyBindType.Press)))
-                    .ValueChanged += SwitchEChanged;
-                comboMenu.AddItem(
-                    new MenuItem("ComboR", "Use R Mode: ", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" })));
-                comboMenu.AddItem(
-                        new MenuItem("ComboRSwitch", "Switch R Mode Key", true).SetValue(new KeyBind('H',
-                            KeyBindType.Press)))
-                    .ValueChanged += SwitchRChanged;
-                comboMenu.AddItem(new MenuItem("ComboIgnite", "Use Ignite", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboE", "Use E", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboR", "Use R", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboRSolo", "Use R| Solo Mode", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboRTeam", "Use R| TeamFight Mode", true).SetValue(true));
             }
 
             var harassMenu = Menu.AddSubMenu(new Menu("Harass", "Harass"));
             {
                 harassMenu.AddItem(new MenuItem("HarassQ", "Use Q", true).SetValue(true));
-                harassMenu.AddItem(new MenuItem("HarassQLH", "Use Q|Last Hit", true).SetValue(true));
-                harassMenu.AddItem(new MenuItem("HarassW", "Use W", true).SetValue(false));
+                harassMenu.AddItem(new MenuItem("HarassW", "Use W", true).SetValue(true));
+                harassMenu.AddItem(new MenuItem("HarassE", "Use E", true).SetValue(true));
                 harassMenu.AddItem(
                     new MenuItem("HarassMana", "When Player ManaPercent >= x%", true).SetValue(new Slider(60)));
             }
@@ -80,7 +71,6 @@
                 killStealMenu.AddItem(new MenuItem("KillStealW", "Use W", true).SetValue(true));
             }
 
-
             var miscMenu = Menu.AddSubMenu(new Menu("Misc", "Misc"));
             {
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
@@ -92,56 +82,14 @@
                 {
                     LevelsManager.AddToMenu(autoLevelMenu);
                 }
+
+                miscMenu.AddItem(new MenuItem("SupportMode", "Support Mode", true).SetValue(false));
             }
 
             Menu.AddItem(new MenuItem("asd ad asd ", " ", true));
             Menu.AddItem(new MenuItem("Credit", "Credit: NightMoon", true));
 
             Menu.AddToMainMenu();
-        }
-
-        private static void SwitchRChanged(object obj, OnValueChangeEventArgs Args)
-        {
-            if (Args.GetNewValue<KeyBind>().Active)
-            {
-                switch (Menu.Item("ComboR", true).GetValue<StringList>().SelectedIndex)
-                {
-                    case 0:
-                        Menu.Item("ComboR", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" }, 1));
-                        break;
-                    case 1:
-                        Menu.Item("ComboR", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" }, 2));
-                        break;
-                    case 2:
-                        Menu.Item("ComboR", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" }, 3));
-                        break;
-                    case 3:
-                        Menu.Item("ComboR", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" }, 4));
-                        break;
-                    case 4:
-                        Menu.Item("ComboR", true).SetValue(new StringList(new[] { "All", "Q", "W", "E", "Off" }));
-                        break;
-                }
-            }
-        }
-
-        private static void SwitchEChanged(object obj, OnValueChangeEventArgs Args)
-        {
-            if (Args.GetNewValue<KeyBind>().Active)
-            {
-                switch (Menu.Item("ComboE", true).GetValue<StringList>().SelectedIndex)
-                {
-                    case 0:
-                        Menu.Item("ComboE", true).SetValue(new StringList(new[] { "Low Hp", "Gank", "Off" }, 1));
-                        break;
-                    case 1:
-                        Menu.Item("ComboE", true).SetValue(new StringList(new[] { "Low Hp", "Gank", "Off" }, 2));
-                        break;
-                    case 2:
-                        Menu.Item("ComboE", true).SetValue(new StringList(new[] { "Low Hp", "Gank", "Off" }));
-                        break;
-                }
-            }
         }
     }
 }

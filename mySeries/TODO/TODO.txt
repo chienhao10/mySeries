@@ -1,6 +1,6 @@
-DONE:Annie AurelionSol Diana Ryze
+DONE:Annie AurelionSol Diana Ryze Katarina
 
-TODO:Brand Karma Katarina Lux Syndra Viktor
+TODO:Brand Karma Lux Syndra Viktor
 
 Need TODO:
 Any Suggest!
