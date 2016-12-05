@@ -27,7 +27,7 @@
                     {
                         if (SpellManager.isCastingUlt)
                         {
-                            SpellManager.CancelUlt();
+                            SpellManager.CancelUlt(true);
                             Q.CastOnUnit(target, true);
                             return;
                         }
@@ -42,7 +42,7 @@
                             var pos = Me.Position.Extend(target.Position, target.DistanceToPlayer() + 130);
                             if (SpellManager.isCastingUlt)
                             {
-                                SpellManager.CancelUlt();
+                                SpellManager.CancelUlt(true);
                                 E.Cast(pos, true);
                                 return;
                             }
@@ -54,7 +54,7 @@
                         {
                             if (SpellManager.isCastingUlt)
                             {
-                                SpellManager.CancelUlt();
+                                SpellManager.CancelUlt(true);
                                 E.Cast(target, true);
                                 return;
                             }
@@ -69,7 +69,7 @@
                     {
                         if (SpellManager.isCastingUlt)
                         {
-                            SpellManager.CancelUlt();
+                            SpellManager.CancelUlt(true);
                             Q.CastOnUnit(target, true);
                             E.Cast(target, true);
                             return;
@@ -96,7 +96,7 @@
                             {
                                 if (SpellManager.isCastingUlt)
                                 {
-                                    SpellManager.CancelUlt();
+                                    SpellManager.CancelUlt(true);
                                     E.Cast(obj.Position, true);
                                     Utility.DelayAction.Add(100 + Game.Ping, () => E.Cast(target, true));
                                     return;
