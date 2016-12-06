@@ -16,9 +16,10 @@
 
             if (Menu.GetBool("FleeE") && E.IsReady())
             {
-                var nearest = SpellManager.badaoFleeLogic().MinOrDefault(x => x.Position.Distance(Game.CursorPos));
+                var nearest = SpellManager.badaoFleeLogic.MinOrDefault(x => x.Position.Distance(Game.CursorPos));
 
-                if (nearest != null && nearest.Position.Distance(Game.CursorPos) < Me.Distance(Game.CursorPos))
+                if (nearest != null && nearest.Position.DistanceToMouse() < Me.DistanceToMouse() &&
+                    nearest.Position.DistanceToPlayer() > 300)
                 {
                     var pos = nearest.Position.To2D().Extend(Game.CursorPos.To2D(), 150);
                     E.Cast(pos);

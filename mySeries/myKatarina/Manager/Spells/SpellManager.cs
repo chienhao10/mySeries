@@ -8,7 +8,7 @@
 
     internal class SpellManager : Logic
     {
-        internal static int PassiveRange = 340;
+        internal const int PassiveRange = 340;
 
         internal static void Init()
         {
@@ -169,19 +169,22 @@
         internal static bool isCastingUlt
             => Me.Buffs.Any(x => x.Name.ToLower().Contains("katarinar")) || Me.IsChannelingImportantSpell();
 
-        internal static List<GameObject> badaoFleeLogic()
+        internal static IEnumerable<GameObject> badaoFleeLogic
         {
-            var Vinasun = new List<GameObject>();
-            Vinasun.AddRange(
-                MinionManager.GetMinions(E.Range, MinionTypes.All, MinionTeam.All)
-                    .Where(x => !(x is Obj_AI_Minion && MinionManager.IsWard((Obj_AI_Minion) x))));
-            Vinasun.AddRange(
-                HeroManager.AllHeroes.Where(
-                    unit =>
-                        unit != null && unit.IsValid && !unit.IsDead && unit.IsTargetable &&
-                        Me.Distance(unit) <= E.Range));
-            Vinasun.AddRange(Daggers.Select(x => x.Dagger).ToList());
-            return Vinasun;
+            get
+            {
+                var Vinasun = new List<GameObject>();
+                Vinasun.AddRange(
+                    ObjectManager.Get<Obj_AI_Base>()
+                        .Where(x => !(x is Obj_AI_Minion && MinionManager.IsWard((Obj_AI_Minion) x))));
+                Vinasun.AddRange(
+                    HeroManager.AllHeroes.Where(
+                        unit =>
+                            unit != null && unit.IsValid && !unit.IsDead && unit.IsTargetable &&
+                            Me.Distance(unit) <= E.Range));
+                Vinasun.AddRange(Daggers.Select(x => x.Dagger).ToList());
+                return Vinasun;
+            }
         }
     }
 }
