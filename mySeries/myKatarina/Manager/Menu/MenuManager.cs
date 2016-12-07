@@ -28,6 +28,7 @@
                 comboMenu.AddItem(new MenuItem("ComboR", "Use R", true).SetValue(true));
                 comboMenu.AddItem(
                     new MenuItem("ComboMode", "Combo Mode: ", true).SetValue(new StringList(new[] {"QEW", "EQW"})));
+                comboMenu.AddItem(new MenuItem("ComboDot", "Use Ignite", true).SetValue(true));
             }
 
             var harassMenu = Menu.AddSubMenu(new Menu("Harass", "Harass"));

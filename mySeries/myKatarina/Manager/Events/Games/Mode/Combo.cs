@@ -3,6 +3,7 @@
     using Spells;
     using System.Linq;
     using myCommon;
+    using LeagueSharp;
     using LeagueSharp.Common;
 
     internal class Combo : Logic
@@ -18,6 +19,14 @@
 
             if (target.Check(E.Range + 300f))
             {
+                if (Menu.GetBool("ComboDot") && Ignite != SpellSlot.Unknown && Ignite.IsReady() &&
+                    target.IsValidTarget(600) &&
+                    (target.Health < DamageCalculate.GetComboDamage(target) ||
+                     target.Health < Me.GetSummonerSpellDamage(target, Damage.SummonerSpell.Ignite)))
+                {
+                    Me.Spellbook.CastSpell(Ignite, target);
+                }
+
                 switch (Menu.GetList("ComboMode"))
                 {
                     case 0:
