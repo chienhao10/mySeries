@@ -90,24 +90,14 @@
                 {
                     if (Menu.GetBool("ComboRalways"))
                     {
-                        var rPred = R.GetPrediction(target, true);
-
-                        if (rPred.Hitchance >= HitChance.VeryHigh)
-                        {
-                            R.Cast(rPred.CastPosition, true);
-                        }
+                        R.Cast(target.Position, true);
                     }
 
                     if (Menu.GetBool("ComboRKill") &&
                         ((target.Health < DamageCalculate.GetComboDamage(target) && target.IsValidTarget(R.Range - 200)) ||
                          target.Health < R.GetDamage(target)))
                     {
-                        var rPred = R.GetPrediction(target, true);
-
-                        if (rPred.Hitchance >= HitChance.VeryHigh)
-                        {
-                            R.Cast(rPred.CastPosition, true);
-                        }
+                        R.Cast(target.Position, true);
                     }
 
                     if (Menu.GetBool("ComboRTeam") && Me.CountEnemiesInRange(R.Range + R.Width) >= Menu.GetSlider("ComboRTeamHit"))
