@@ -25,9 +25,15 @@
                 comboMenu.AddItem(new MenuItem("ComboQ", "Use Q", true).SetValue(true));
                 comboMenu.AddItem(new MenuItem("ComboW", "Use W", true).SetValue(true));
                 comboMenu.AddItem(new MenuItem("ComboE", "Use E", true).SetValue(true));
-                comboMenu.AddItem(new MenuItem("ComboR", "Use R", true).SetValue(true));
                 comboMenu.AddItem(
                     new MenuItem("ComboMode", "Combo Mode: ", true).SetValue(new StringList(new[] {"QEW", "EQW"})));
+                comboMenu.AddItem(new MenuItem("ComboR", "Use R", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboRalways", "Use R| Always Cast", true).SetValue(false));
+                comboMenu.AddItem(new MenuItem("ComboRcanKill", "Use R| Can Killable Target", true).SetValue(true));
+                comboMenu.AddItem(new MenuItem("ComboRhitCount", "Use R| Hit Count Ememies (AOE)", true).SetValue(true));
+                comboMenu.AddItem(
+                    new MenuItem("ComboRhitCountcount", "Use R| Hit Count Ememies >= x", true).SetValue(new Slider(3, 1,
+                        5)));
                 comboMenu.AddItem(new MenuItem("ComboDot", "Use Ignite", true).SetValue(true));
             }
 
@@ -82,6 +88,20 @@
 
             var miscMenu = Menu.AddSubMenu(new Menu("Misc", "Misc"));
             {
+                var eSettings = miscMenu.AddSubMenu(new Menu("E Settings", "E Settings"));
+                {
+                    eSettings.AddItem(new MenuItem("LogicE", "Enabled Logic E", true).SetValue(true));
+                    eSettings.AddItem(new MenuItem("Humanizer", "Enabled Humanizer", true).SetValue(false));
+                    eSettings.AddItem(new MenuItem("HumanizerD", "Humanizer Delay", true).SetValue(new Slider(0, 0, 1000)));
+                    eSettings.AddItem(
+                        new MenuItem("Eturret", "Dont Use E to Turret", true).SetValue(
+                            new StringList(new[] {"Always", "Smart", "Off"}, 1)));
+                    eSettings.AddItem(
+                        new MenuItem("EturretHP", "Smart Mode| When Player HealthPercent", true).SetValue(new Slider(50))
+                            .SetTooltip(
+                                "just when player HealthPercent <= Settings, will enabled my setting, if High than percent it will can dash to turret"));
+                }
+
                 var skinMenu = miscMenu.AddSubMenu(new Menu("SkinChange", "SkinChange"));
                 {
                     SkinManager.AddToMenu(skinMenu, 9);

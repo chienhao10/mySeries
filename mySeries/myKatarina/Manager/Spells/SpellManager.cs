@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Collections.Generic;
     using myCommon;
+    using SharpDX;
     using LeagueSharp;
     using LeagueSharp.Common;
 
@@ -12,10 +13,10 @@
 
         internal static void Init()
         {
-            Q = new Spell(SpellSlot.Q, 625f);
-            W = new Spell(SpellSlot.W, 300f);
-            E = new Spell(SpellSlot.E, 725f);
-            R = new Spell(SpellSlot.R, 550f);
+            Q = new Spell(SpellSlot.Q, 625f, TargetSelector.DamageType.Magical);
+            W = new Spell(SpellSlot.W, 300f, TargetSelector.DamageType.Magical);
+            E = new Spell(SpellSlot.E, 725f, TargetSelector.DamageType.Magical);
+            R = new Spell(SpellSlot.R, 550f, TargetSelector.DamageType.Magical);
 
             R.SetCharged("KaratinaR", "KatarinaR", 550, 550, 1.0f);
 
@@ -35,48 +36,18 @@
 
                 if (useE && E.IsReady() && target.IsValidTarget(E.Range + 300f) && !Q.IsReady())
                 {
-                    if (Daggers.Any(
-                        x =>
-                            HeroManager.Enemies.Any(a => a.Distance(x.Position) <= PassiveRange) &&
-                            x.Position.DistanceToPlayer() <= E.Range))
-                    {
-                        foreach (
-                            var obj in
-                            Daggers.Where(x => x.Position.Distance(target.Position) <= PassiveRange)
-                                .OrderByDescending(x => x.Position.Distance(target.Position)))
-                        {
-                            if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
-                            {
-                                E.Cast(obj.Position, true);
-                            }
-                        }
-                    }
-                    else if (
-                        Daggers.Any(
-                            x =>
-                                HeroManager.Enemies.Any(a => a.Distance(x.Position) <= E.Range) &&
-                                x.Position.DistanceToPlayer() <= E.Range))
-                    {
-                        foreach (
-                            var obj in
-                            Daggers.Where(x => x.Position.Distance(target.Position) <= E.Range)
-                                .OrderBy(x => x.Position.Distance(target.Position)))
-                        {
-                            if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
-                            {
-                                E.Cast(obj.Position, true);
-                            }
-                        }
-                    }
-                    else if (target.DistanceToPlayer() <= E.Range + 130)
-                    {
-                        var pos = Me.Position.Extend(target.Position, target.DistanceToPlayer() + 130);
+                    var ePos = GetEPosition(target);
 
-                        E.Cast(pos, true);
-                    }
-                    else if (target.IsValidTarget(E.Range))
+                    if (ePos != Vector3.Zero && ePos.DistanceToPlayer() <= E.Range && CanCastE(ePos, target))
                     {
-                        E.Cast(target, true);
+                        if (Menu.GetBool("Humanizer"))
+                        {
+                            Utility.DelayAction.Add(Menu.GetSlider("HumanizerD"), () => E.Cast(ePos, true));
+                        }
+                        else
+                        {
+                            E.Cast(ePos, true);
+                        }
                     }
                 }
 
@@ -95,48 +66,18 @@
             {
                 if (useE && E.IsReady() && target.IsValidTarget(E.Range + 300f))
                 {
-                    if (Daggers.Any(
-                        x =>
-                            HeroManager.Enemies.Any(a => a.Distance(x.Position) <= PassiveRange) &&
-                            x.Position.DistanceToPlayer() <= E.Range))
-                    {
-                        foreach (
-                            var obj in
-                            Daggers.Where(x => x.Position.Distance(target.Position) <= PassiveRange)
-                                .OrderByDescending(x => x.Position.Distance(target.Position)))
-                        {
-                            if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
-                            {
-                                E.Cast(obj.Position, true);
-                            }
-                        }
-                    }
-                    else if (
-                        Daggers.Any(
-                            x =>
-                                HeroManager.Enemies.Any(a => a.Distance(x.Position) <= E.Range) &&
-                                x.Position.DistanceToPlayer() <= E.Range))
-                    {
-                        foreach (
-                            var obj in
-                            Daggers.Where(x => x.Position.Distance(target.Position) <= E.Range)
-                                .OrderBy(x => x.Position.Distance(target.Position)))
-                        {
-                            if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
-                            {
-                                E.Cast(obj.Position, true);
-                            }
-                        }
-                    }
-                    else if (target.DistanceToPlayer() <= E.Range + 130)
-                    {
-                        var pos = Me.Position.Extend(target.Position, target.DistanceToPlayer() + 130);
+                    var ePos = GetEPosition(target);
 
-                        E.Cast(pos, true);
-                    }
-                    else if(target.IsValidTarget(E.Range))
+                    if (ePos != Vector3.Zero && ePos.DistanceToPlayer() <= E.Range && CanCastE(ePos, target))
                     {
-                        E.Cast(target, true);
+                        if (Menu.GetBool("Humanizer"))
+                        {
+                            Utility.DelayAction.Add(Menu.GetSlider("HumanizerD"), () => E.Cast(ePos, true));
+                        }
+                        else
+                        {
+                            E.Cast(ePos, true);
+                        }
                     }
                 }
 
@@ -150,6 +91,129 @@
                     W.Cast();
                 }
             }
+        }
+
+        internal static Vector3 GetEPosition(Obj_AI_Hero target)
+        {
+            if (Daggers.Any(
+                x =>
+                    HeroManager.Enemies.Any(a => a.Distance(x.Position) <= PassiveRange) &&
+                    x.Position.DistanceToPlayer() <= E.Range))
+            {
+                foreach (
+                    var obj in
+                    Daggers.Where(x => x.Position.Distance(target.Position) <= PassiveRange)
+                        .OrderByDescending(x => x.Position.Distance(target.Position)))
+                {
+                    if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
+                    {
+                        return obj.Position;
+                    }
+                }
+            }
+            else if (
+                Daggers.Any(
+                    x =>
+                        HeroManager.Enemies.Any(a => a.Distance(x.Position) <= E.Range) &&
+                        x.Position.DistanceToPlayer() <= E.Range))
+            {
+                foreach (
+                    var obj in
+                    Daggers.Where(x => x.Position.Distance(target.Position) <= E.Range)
+                        .OrderBy(x => x.Position.Distance(target.Position)))
+                {
+                    if (obj.Dagger != null && obj.Dagger.IsValid && obj.Position.DistanceToPlayer() <= E.Range)
+                    {
+                        return obj.Position;
+                    }
+                }
+            }
+            else if (target.DistanceToPlayer() <= E.Range - 130)
+            {
+                return Me.Position.Extend(target.Position, target.DistanceToPlayer() + 130);
+            }
+            else if (target.IsValidTarget(E.Range))
+            {
+                return target.Position;
+            }
+            else
+            {
+                return Vector3.Zero;
+            }
+
+            return Vector3.Zero;
+        }
+
+        internal static bool CanCastE(Vector3 pos, Obj_AI_Hero target)
+        {
+            if (pos == Vector3.Zero || target == null || target.IsDead)
+            {
+                return false;
+            }
+
+            if (Menu.GetList("Eturret") == 0 && pos.UnderTurret(true))
+            {
+                return false;
+            }
+
+            if (Menu.GetList("Eturret") == 1 && pos.UnderTurret(true))
+            {
+                if (Me.HealthPercent <= Menu.GetSlider("EturretHP") &&
+                    target.Health > DamageCalculate.GetComboDamage(target)*0.85)
+                {
+                    return false;
+                }
+            }
+
+            if (Menu.GetBool("LogicE"))
+            {
+                if (HeroManager.Enemies.Count(x => x.Distance(pos) <= R.Range) >= 3)
+                {
+                    if (HeroManager.Enemies.Count(x => x.Distance(pos) <= R.Range) == 3)
+                    {
+                        if (HeroManager.Enemies.Count(x => x.Health < DamageCalculate.GetComboDamage(target)*1.45) <= 2)
+                        {
+                            return false;
+                        }
+                    }
+                    else if (HeroManager.Enemies.Count(x => x.Distance(pos) <= R.Range) == 4)
+                    {
+                        if (HeroManager.Enemies.Count(x => x.Health < DamageCalculate.GetComboDamage(target)*1.45) < 2)
+                        {
+                            return false;
+                        }
+                    }
+                    else if (HeroManager.Enemies.Count(x => x.Distance(pos) <= R.Range) == 5)
+                    {
+                        if (HeroManager.Enemies.Count(x => x.Health < DamageCalculate.GetComboDamage(target)*1.45) < 3)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (Orbwalker.ActiveMode == myCommon.Orbwalking.OrbwalkingMode.Combo)
+                    {
+                        if (target.Health >
+                            (HeroManager.Allies.Any(x => x.DistanceToPlayer() <= E.Range)
+                                ? DamageCalculate.GetComboDamage(target) + Me.Level*45
+                                : DamageCalculate.GetComboDamage(target)))
+                        {
+                            return false;
+                        }
+                    }
+                    else if (Orbwalker.ActiveMode == myCommon.Orbwalking.OrbwalkingMode.Mixed)
+                    {
+                        if (pos.UnderTurret(true))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         internal static void CancelUlt(bool ignoreCheck = false)
