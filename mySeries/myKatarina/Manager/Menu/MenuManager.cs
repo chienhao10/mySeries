@@ -90,7 +90,7 @@
             {
                 var eSettings = miscMenu.AddSubMenu(new Menu("E Settings", "E Settings"));
                 {
-                    eSettings.AddItem(new MenuItem("LogicE", "Enabled Logic E", true).SetValue(true));
+                    eSettings.AddItem(new MenuItem("LogicE", "Enabled Logic E(Not work in EQW Mode)", true).SetValue(true));
                     eSettings.AddItem(new MenuItem("Humanizer", "Enabled Humanizer", true).SetValue(false));
                     eSettings.AddItem(new MenuItem("HumanizerD", "Humanizer Delay", true).SetValue(new Slider(0, 0, 1000)));
                     eSettings.AddItem(
@@ -110,6 +110,11 @@
                 var autoLevelMenu = miscMenu.AddSubMenu(new Menu("Auto Levels", "Auto Levels"));
                 {
                     LevelsManager.AddToMenu(autoLevelMenu);
+                }
+
+                var itemsMeun = miscMenu.AddSubMenu(new Menu("Items", "Items"));
+                {
+                    ItemManager.AddToMenu(itemsMeun);
                 }
 
                 miscMenu.AddItem(

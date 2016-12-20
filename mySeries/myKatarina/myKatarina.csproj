@@ -77,6 +77,7 @@
     <Compile Include="myCommon\DamageIndicator.cs" />
     <Compile Include="myCommon\Distance.cs" />
     <Compile Include="myCommon\HumanizerManager.cs" />
+    <Compile Include="myCommon\ItemManager.cs" />
     <Compile Include="myCommon\LevelsManager.cs" />
     <Compile Include="myCommon\ManaManager.cs" />
     <Compile Include="myCommon\MenuManager.cs" />
