@@ -16,9 +16,9 @@
                 if (Menu.GetBool("KillStealQ") && Q.IsReady() && target.IsValidTarget(Q.Range) &&
                     Me.GetSpellDamage(target, SpellSlot.Q) > target.Health + target.MagicalShield)
                 {
-                    var qPred = Q.GetPrediction(target, true, -1, new[] { CollisionableObjects.YasuoWall });
+                    var qPred = Q.GetPrediction(target, true);
 
-                    if (qPred.Hitchance >= HitChance.VeryHigh || qPred.Hitchance == HitChance.Immobile)
+                    if (qPred.Hitchance >= HitChance.VeryHigh)
                     {
                         Q.Cast(qPred.CastPosition, true);
                     }
