@@ -62,7 +62,7 @@
             }
 
             #region Hextech Gun
-            if (itemMenu.Item("HextechEnabled").GetValue<bool>() && Items.HasItem(3146) && Items.CanUseItem(3146))
+            if (itemMenu.Item("HextechEnabled", true).GetValue<bool>() && Items.HasItem(3146) && Items.CanUseItem(3146))
             {
                 if (itemMenu.Item("HextechCombo", true).GetValue<bool>() && isCombo)
                 {
@@ -97,7 +97,7 @@
             #endregion
 
             #region Hextech GLP-800
-            if (itemMenu.Item("GLP800Enabled").GetValue<bool>() && Items.HasItem(3030) && Items.CanUseItem(3030))
+            if (itemMenu.Item("GLP800Enabled", true).GetValue<bool>() && Items.HasItem(3030) && Items.CanUseItem(3030))
             {
                 if (itemMenu.Item("GLP800Combo", true).GetValue<bool>() && isCombo)
                 {
@@ -136,7 +136,7 @@
             #endregion
 
             #region Hextech Protobelt-01
-            if (itemMenu.Item("ProtobeltEnabled").GetValue<bool>() && Items.HasItem(3152) && Items.CanUseItem(3152))
+            if (itemMenu.Item("ProtobeltEnabled", true).GetValue<bool>() && Items.HasItem(3152) && Items.CanUseItem(3152))
             {
                 if (itemMenu.Item("ProtobeltCombo", true).GetValue<bool>() && isCombo)
                 {
